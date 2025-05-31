@@ -1,0 +1,83 @@
+// GTD Attribute Tree
+digraph {
+	graph [rankdir=TB splines=ortho]
+	Fact [label="Terrorism Incidents" fillcolor=lightblue shape=box style=filled]
+	Measures [label=Measures fillcolor=lightyellow shape=box style=filled]
+	incident_count [label=incident_count shape=ellipse]
+	nkill [label=nkill shape=ellipse]
+	nwound [label=nwound shape=ellipse]
+	nkillter [label=nkillter shape=ellipse]
+	nwoundter [label=nwoundter shape=ellipse]
+	propvalue [label=propvalue shape=ellipse]
+	success [label=success shape=ellipse]
+	Dimensions [label=Dimensions fillcolor=lightyellow shape=box style=filled]
+	Time [label=Time fillcolor=lightgreen shape=box style=filled]
+	year [label=year shape=ellipse]
+	month [label=month shape=ellipse]
+	day [label=day shape=ellipse]
+	approxdate [label=approxdate shape=ellipse]
+	extended [label=extended shape=ellipse]
+	Location [label=Location fillcolor=lightgreen shape=box style=filled]
+	region [label=region shape=ellipse]
+	country [label=country shape=ellipse]
+	provstate [label=provstate shape=ellipse]
+	city [label=city shape=ellipse]
+	latitude [label=latitude shape=ellipse]
+	longitude [label=longitude shape=ellipse]
+	specificity [label=specificity shape=ellipse]
+	vicinity [label=vicinity shape=ellipse]
+	AttackType [label="Attack Type" fillcolor=lightgreen shape=box style=filled]
+	attack_type [label=attack_type shape=ellipse]
+	weapon_type [label=weapon_type shape=ellipse]
+	weapon_subtype [label=weapon_subtype shape=ellipse]
+	TargetType [label="Target Type" fillcolor=lightgreen shape=box style=filled]
+	target_type [label=target_type shape=ellipse]
+	target_subtype [label=target_subtype shape=ellipse]
+	nationality [label=nationality shape=ellipse]
+	TerroristGroup [label="Terrorist Group" fillcolor=lightgreen shape=box style=filled]
+	group_name [label=group_name shape=ellipse]
+	subgroup_name [label=subgroup_name shape=ellipse]
+	uncertainty [label=uncertainty shape=ellipse]
+	PropertyDamage [label="Property Damage" fillcolor=lightgreen shape=box style=filled]
+	extent [label=extent shape=ellipse]
+	property [label=property shape=ellipse]
+	Fact -> Measures
+	Fact -> Dimensions
+	Measures -> incident_count
+	Measures -> nkill
+	Measures -> nwound
+	Measures -> nkillter
+	Measures -> nwoundter
+	Measures -> propvalue
+	Measures -> success
+	Dimensions -> Time
+	Dimensions -> Location
+	Dimensions -> AttackType
+	Dimensions -> TargetType
+	Dimensions -> TerroristGroup
+	Dimensions -> PropertyDamage
+	Time -> year
+	year -> month
+	month -> day
+	Time -> approxdate
+	Time -> extended
+	Location -> region
+	region -> country
+	country -> provstate
+	provstate -> city
+	Location -> latitude
+	Location -> longitude
+	Location -> specificity
+	Location -> vicinity
+	AttackType -> attack_type
+	attack_type -> weapon_type
+	weapon_type -> weapon_subtype
+	TargetType -> target_type
+	target_type -> target_subtype
+	target_subtype -> nationality
+	TerroristGroup -> group_name
+	TerroristGroup -> subgroup_name
+	TerroristGroup -> uncertainty
+	PropertyDamage -> extent
+	PropertyDamage -> property
+}

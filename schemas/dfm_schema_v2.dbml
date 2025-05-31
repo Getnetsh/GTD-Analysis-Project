@@ -1,0 +1,69 @@
+Table Dim_Time {
+  time_id int [pk, increment]
+  year int
+  month int
+  day int
+  approxdate varchar(50)
+  extended int
+}
+
+Table Dim_Location {
+  location_id int [pk, increment]
+  region varchar(100)
+  country varchar(100)
+  provstate varchar(100)
+  city varchar(100)
+  latitude float
+  longitude float
+  specificity int
+  vicinity int
+  unknown_location_flag int
+}
+
+Table Dim_AttackType {
+  attack_type_id int [pk, increment]
+  attack_type varchar(100)
+  weapon_type varchar(100)
+  weapon_subtype varchar(100)
+}
+
+Table Dim_TargetType {
+  target_type_id int [pk, increment]
+  target_type varchar(100)
+  target_subtype varchar(100)
+  nationality varchar(100)
+}
+
+Table Dim_TerroristGroup {
+  group_id int [pk, increment]
+  group_name varchar(200)
+  subgroup_name varchar(200)
+  uncertainty int
+  unknown_group_flag int
+}
+
+Table Dim_PropertyDamage {
+  property_id int [pk, increment]
+  extent varchar(100)
+  property int
+}
+
+Table Fact_Incidents {
+  fact_id int [pk, increment]
+  eventid bigint
+  time_id int [ref: > Dim_Time.time_id]
+  location_id int [ref: > Dim_Location.location_id]
+  attack_type_id int [ref: > Dim_AttackType.attack_type_id]
+  target_type_id int [ref: > Dim_TargetType.target_type_id]
+  group_id int [ref: > Dim_TerroristGroup.group_id]
+  property_id int [ref: > Dim_PropertyDamage.property_id]
+  nkill int
+  nwound int
+  nkillter int
+  nwoundter int
+  nkillus int
+  nwoundus int
+  propvalue float
+  success int
+  consistency_flag int
+}

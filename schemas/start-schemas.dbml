@@ -1,0 +1,65 @@
+// GTD Dimensional Fact Model for Data Warehouse
+Table Fact_Incidents {
+  eventid bigint [pk]
+  time_id int [ref: > Dim_Time.time_id]
+  location_id int [ref: > Dim_Location.location_id]
+  attack_id int [ref: > Dim_Attack.attack_id]
+  target_id int [ref: > Dim_Target.target_id]
+  group_id int [ref: > Dim_Group.group_id]
+  property_id int [ref: > Dim_Property.property_id]
+  incident_count int [note: "Default 1"]
+  nkill int
+  nwound int
+  nkillter int
+  nwoundter int
+  propvalue float
+  success int
+}
+
+Table Dim_Time {
+  time_id int [pk, increment]
+  year int
+  month int
+  day int
+  approxdate varchar(50)
+  extended int
+}
+
+Table Dim_Location {
+  location_id int [pk, increment]
+  region varchar(100)
+  country varchar(100)
+  provstate varchar(100)
+  city varchar(100)
+  latitude float
+  longitude float
+  specificity int
+  vicinity int
+}
+
+Table Dim_Attack {
+  attack_id int [pk, increment]
+  attack_type varchar(100)
+  weapon_type varchar(100)
+  weapon_subtype varchar(100)
+}
+
+Table Dim_Target {
+  target_id int [pk, increment]
+  target_type varchar(100)
+  target_subtype varchar(100)
+  nationality varchar(100)
+}
+
+Table Dim_Group {
+  group_id int [pk, increment]
+  group_name varchar(255)
+  subgroup_name varchar(255)
+  uncertainty int
+}
+
+Table Dim_Property {
+  property_id int [pk, increment]
+  extent varchar(100)
+  property int
+}

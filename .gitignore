@@ -1,0 +1,52 @@
+# Bytecode & Python junk
+__pycache__/
+*.py[cod]
+*.pyc
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Data files
+# Ignore everything under raw/ and processed/
+data/raw/*
+data/processed/*
+
+# Except .gitkeep in processed/
+!data/processed/.gitkeep
+
+# Ignore individual data files if not using LFS or external storage
+*.csv
+*.txt
+*.log
+
+# Sensitive config files
+*.env
+config.ini
+credentials.json
+*.pem
+*.key
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter checkpoint files
+.ipynb_checkpoints/
+
+# Temporary and backup files
+*.bak
+*.swp
+*~
+*.tmp

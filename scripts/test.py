@@ -1,0 +1,12 @@
+import pandas as pd
+df = pd.read_csv(r'D:\Calabria_Universty_Doc\First year\2nd semester\Data Warehouse and Visualization\DWHP\GTD_Analysis_Project\data\processed\gtd_cleaned_enhanced_v5.csv')
+print(f"Rows: {len(df):,}, Columns: {len(df.columns)}: {df.columns.tolist()}")
+print(f"property: {df['property'].value_counts().sort_index().to_dict()}")
+print(f"extent: {df['extent'].value_counts().sort_index().to_dict()}")
+print(f"propvalue: {(df['propvalue'] > 0).sum():,.0f} positive, {(df['propvalue'].isna()).sum():,.0f} missing")
+print(f"propvalue_imputed: {df['propvalue_imputed'].sum():,.0f} rows")
+print(f"nkillus: {(df['nkillus'] > 0).sum():,.0f} positive, max={df['nkillus'].max():,.2f}")
+print(f"nwoundus: {(df['nwoundus'] > 0).sum():,.0f} positive, max={df['nwoundus'].max():,.2f}")
+print(f"us_casualty_imputed: {df['us_casualty_imputed'].sum():,.0f} rows")
+print(f"nkill: {(df['nkill'] > 0).sum():,.0f} positive, max={df['nkill'].max():,.0f}")
+print(f"nwound: {(df['nwound'] > 0).sum():,.0f} positive, max={df['nwound'].max():,.0f}")

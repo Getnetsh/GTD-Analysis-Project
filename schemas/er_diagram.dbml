@@ -1,0 +1,97 @@
+// GTD Reconciled Database E/R Diagram
+Table Locations {
+  location_id int [pk, increment]
+  country int
+  country_txt varchar(100)
+  region int
+  region_txt varchar(100)
+  provstate varchar(100)
+  city varchar(100)
+  latitude float
+  longitude float
+  specificity int
+  vicinity int
+  location varchar(255)
+}
+
+Table Incidents {
+  eventid bigint [pk]
+  iyear int
+  imonth int
+  iday int
+  approxdate varchar(50)
+  extended int
+  resolution varchar(50)
+  summary text
+  motive text
+  success int
+  suicide int
+  location_id int [ref: > Locations.location_id]
+}
+
+Table Attacks {
+  attack_id int [pk, increment]
+  eventid bigint [ref: > Incidents.eventid]
+  attacktype1 int
+  attacktype1_txt varchar(100)
+  attacktype2 int
+  attacktype2_txt varchar(100)
+  attacktype3 int
+  attacktype3_txt varchar(100)
+  weaptype1 int
+  weaptype1_txt varchar(100)
+  weapsubtype1 int
+  weapsubtype1_txt varchar(100)
+  weaptype2 int
+  weaptype2_txt varchar(100)
+  weapsubtype2 int
+  weapsubtype2_txt varchar(100)
+  weapdetail text
+}
+
+Table Targets {
+  target_id int [pk, increment]
+  eventid bigint [ref: > Incidents.eventid]
+  targtype1 int
+  targtype1_txt varchar(100)
+  targsubtype1 int
+  targsubtype1_txt varchar(100)
+  natlty1 int
+  natlty1_txt varchar(100)
+  targtype2 int
+  targtype2_txt varchar(100)
+  targsubtype2 int
+  targsubtype2_txt varchar(100)
+  natlty2 int
+  natlty2_txt varchar(100)
+  target1 varchar(255)
+}
+
+Table Casualties {
+  casualty_id int [pk, increment]
+  eventid bigint [unique, ref: > Incidents.eventid]
+  nkill int
+  nwound int
+  nkillter int
+  nwoundter int
+  nkillus int
+  nwoundus int
+}
+
+Table Groups {
+  group_id int [pk, increment]
+  eventid bigint [ref: > Incidents.eventid]
+  gname varchar(255)
+  gsubname varchar(255)
+  guncertain1 int
+}
+
+Table Properties {
+  property_id int [pk, increment]
+  eventid bigint [ref: > Incidents.eventid]
+  property int
+  propextent int
+  propextent_txt varchar(100)
+  propvalue float
+  propcomment text
+}

@@ -157,7 +157,7 @@ for col in ['summary', 'propcomment']:
         if missing_count > 0:
             logging.info(f"Filled {missing_count:,.0f} missing values in {col} with ''")
 
-# Validate U.S. data
+# Validate data
 if 'natlty1_txt' in df.columns:
     us_attacks = df[(df['natlty1_txt'] == 'united states') | (df['country_txt'] == 'united states')]
     logging.info(f"Rows with U.S. nationality or country: {len(us_attacks):,}")
@@ -172,7 +172,7 @@ if 'natlty1_txt' in df.columns:
                 missing_us[['eventid', 'nkill', 'nwound', 'nkillus', 'nwoundus', 'natlty1_txt', 'country_txt']].to_csv(us_discrepancy_path, index=False)
                 logging.info(f"Saved U.S. casualty discrepancies to: {us_discrepancy_path}")
 
-# Impute U.S. casualties
+# Impute casualties
 if IMPUTE_US_CASUALTIES and 'nkillus' in df.columns and 'nwoundus' in df.columns:
     us_condition = (df['natlty1_txt'] == 'united states') | (df['country_txt'] == 'united states')
     nkillus_condition = us_condition & (df['nkillus'].fillna(0) == 0) & (df['nkill'].fillna(0) > 0)

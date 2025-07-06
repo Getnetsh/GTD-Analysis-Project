@@ -1,1 +1,5 @@
 *.csv filter=lfs diff=lfs merge=lfs -text
+# API keys
+*.env
+*.key
+*.secret
